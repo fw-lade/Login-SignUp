@@ -1,0 +1,62 @@
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    ...
+  });
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit= (e) => {
+    e.preventDefault()
+
+    localStorage.setItem("userDetails", JSON.stringify(formData))
+
+comsole.log('userDetails')
+comsole.log(formData)
+//clears form
+    setFormData({
+        name: '",
+        ...
+    })
+  }
+  alert("Sign up successful!")
+
+
+
+
+
+const storedUserDetails = parse.JSON(localStorage.getItem('userDetails'))
+
+if(storedUserDetails && storedUserDetails.email && storedUserDetails.password){
+    alert("Login successful")
+    navigate('/home')
+}else{
+    alert('invalid details')
+}
+
+
+const [username, setUsername] = useState('')
+
+useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('userDetails"))
+
+if (storedUser && storedUser.name){
+    setUsername(storedUser.name)
+}
+},[])
+
+
+
+<div>
+{username ? (
+    <h1>Welcome, {username}!</h1>
+) : (
+    <h1>Welcome, Guest!</h1>
+)}
+</div>
