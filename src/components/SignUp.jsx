@@ -1,43 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-    })
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-        setFormData({
-            ...formData, 
-            [name] : value
-        })
-    }
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        // console.log(formData)
-        localStorage.setItem("userDetails", JSON.stringify(formData));
+    // console.log(formData)
+    localStorage.setItem("userDetails", JSON.stringify(formData));
 
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          password: "",
-        });
-        alert("User Registered!")
-
-    }
-
-
-
-
-
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+    });
+    alert("User Registered!");
+    navigate('/')
+  };
 
   return (
     <>
